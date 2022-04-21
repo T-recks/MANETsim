@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
+  <inputs>
+    <inputs name="/MANETcomparison/results/Dsdv-*.vec"/>
+    <inputs name="/MANETcomparison/results/Dsdv-*.sca"/>
+  </inputs>
+  <datasets>
+    <datasets name="performance">
+      <items xsi:type="scave:Add" filterPattern=""/>
+      <items xsi:type="scave:Add" filterPattern="" type="HISTOGRAM"/>
+      <items xsi:type="scave:ComputeScalar" scalarName="AvgLoss" valueExpr="mean('ping loss rate (%)')" moduleExpr="*.host[*].app[*]" groupByExpr=""/>
+      <items xsi:type="scave:ComputeScalar" scalarName="AvgRTT" valueExpr="mean('rtt:histogram:mean')" moduleExpr="*.host[*].app[*]" groupByExpr=""/>
+      <items xsi:type="scave:BarChart" name="ping loss %">
+        <filters xsi:type="scave:Select" filterPattern="AvgLoss"/>
+      </items>
+      <items xsi:type="scave:BarChart" name="RTT">
+        <filters xsi:type="scave:Select" filterPattern="AvgRTT"/>
+      </items>
+    </datasets>
+  </datasets>
+  <chartSheets>
+    <chartSheets name="default" charts="//@datasets/@datasets.0/@items.4 //@datasets/@datasets.0/@items.5"/>
+  </chartSheets>
+</scave:Analysis>
