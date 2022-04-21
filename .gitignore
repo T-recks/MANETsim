@@ -1,3 +1,5 @@
 **/Makefile
 /results/
 /out/
+/.qtenvrc
+/.cmdenv-log
